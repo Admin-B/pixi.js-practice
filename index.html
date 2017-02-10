@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game for Pixi.js</title>
+    <script src="../../resources/pixi.js/pixi.min.js"></script>
+    <style type="text/css">
+      .container{
+        position: absolute;
+        width:500px;
+        height:500px;
+        top:50%;
+        left:50%;
+        margin-left:-250px;
+        margin-top:-250px;
+        text-align: center;
+        line-height: 150%;
+      }
+      #count-down{
+        position: absolute;
+        width:100px;
+        height:100px;
+        color:#fff;
+        text-shadow: 0 0 1px #000;
+        font-size:4em;
+        margin-left: -50px;
+        margin-top:-50px;
+        left:50%;
+        top:50%;
+        display:none;
+        text-align: center;
+      }
+      #btn-start{
+        width:50%;
+        height:50px;
+        line-height: 50px;
+        background: orange;
+        margin:0 auto;
+        color:#fff;
+        text-shadow: 0 0 1px #5d5d5d;
+        font-weight: bold;
+        cursor:pointer;
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; overflow:hidden;">
+    <section id="container-wrap">
+      <section class="container" style="background:#B5D1B6; opacity:0.8;">
+      </section>
+      <section class="container">
+        <h1>pixi.js Practice</h1>
+        <p>
+          방향키를 사용하여 상자를 움직여보세요.<br/><br/>
+          <small>
+          시작버튼을 누르지 않고 조작 시, 버그가 발생합니다.<br/>
+          깔끔한 소스를 위해서, 버그를 고치지않겠습니다!(?)
+          </small>
+        </p>
+        <div id="btn-start">Game Start</div>
+      </section>
+    </section>
+    <section id="count-down"></section>
+
+    <script type="text/javascript">
+      /*set global variable*/
+      var width =window.innerWidth;
+      var height=window.innerHeight;
+      window.requestAnimFrame = (function(){
+        return  window.requestAnimationFrame       ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                function( callback ){
+                  window.setTimeout(callback, 1000 / 60);
+                };
+      })();
+    </script>
+    <script src="./defineVariables.js"></script>
+    <script src="./defineObjects.js"></script>
+    <script src="./logic.js"></script>
+    <script type="text/javascript">
+    var btn=document.getElementById("btn-start");
+    btn.onclick=function(){
+      document.getElementById("container-wrap").style.display="none";
+      var interval=3;
+      var count=document.getElementById("count-down");
+      count.style.display="block";
+      var countDown=function(){
+        if((--interval)===0){
+          gravity.y=10;
+          count.style.display="none";
+          requestAnimFrame(animation);
+          return;
+        }
+        count.innerHTML=interval;
+        setTimeout(countDown,1000);
+      };
+      setTimeout(countDown,1000);
+      count.innerHTML=3;
+    }
+    </script>
+  </body>
+</html>
