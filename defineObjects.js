@@ -1,9 +1,9 @@
 /*preload*/
 (function(){
-  var list=["../../resources/img/forest/bg_forest_layers/bg_forest_a.png",
-            "../../resources/img/forest/bg_forest_layers/bg_forest_b.png",
-            "../../resources/img/forest/bg_forest_layers/bg_forest_c.png",
-            "../../resources/img/Tiles/box.png"
+  var list=[".//bg_forest_a.png",
+            "./bg_forest_b.png",
+            "./bg_forest_c.png",
+            "./box.png"
             ];
   var loader=PIXI.loader;
   for(var i=0; i<list.length; i++){
@@ -33,21 +33,21 @@ function onLoaded(){
     var container=_container.background;
     //background_a
     for(var i=0; i<loop; i++){
-      setObject(['_background_a','../../resources/img/forest/bg_forest_layers/bg_forest_a.png'],function(){
+      setObject(['_background_a','./bg_forest_a.png'],function(){
         this.x=1280*i;
         container.a.addChild(this);
       });
     }
     //background_b
     for(var i=0; i<loop; i++){
-      setObject(['_background_b'+i,'../../resources/img/forest/bg_forest_layers/bg_forest_b.png'],function(){
+      setObject(['_background_b'+i,'./bg_forest_b.png'],function(){
         this.x=1280*i;
         container.b.addChild(this);
       });
     }
     //background_c
     for(var i=0; i<loop; i++){
-      setObject(['_background_c'+i,'../../resources/img/forest/bg_forest_layers/bg_forest_c.png'],function(){
+      setObject(['_background_c'+i,'./bg_forest_c.png'],function(){
         this.x=1280*i;
         container.c.addChild(this);
       });
@@ -63,7 +63,7 @@ function onLoaded(){
   (function(){
     _container.player.position.x=width/2;
     _container.player.position.y=height/2;
-    setObject(['body',"../../resources/img/Tiles/box.png"],function(){
+    setObject(['body',"./box.png"],function(){
       this.anchor.x=0.5;
       this.anchor.y=0.5;
       _container.player.addChild(this);
